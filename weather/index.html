@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Today's Temperature</h1>
+
+    <div class="container">
+        <div class="weather-side">
+            <div class="weather-gradient"></div>
+            <div class="date-container">
+                <h2 class="date-dayname" id="day"></h2>
+                <span class="date-day" id="date">15 Jan 2019</span>
+                <i class="location-icon fa-solid fa-location-dot" data-feather="map-pin"></i><span class="location">Karachi</span>
+            </div>
+            <div class="weather-container">
+                <h1 class="weather-temp">30°C</h1>
+            </div>
+        </div>
+
+        <!-- dropdown -->
+        <div>
+            <select name="" id="select-location" class="dropdown">
+                <option value="">Select City</option>
+                <option value="karachi">karachi</option>
+                <option value="islamabad">Islamabad</option>
+                <option value="lahore">Lahore</option>
+                <option value="murree">Murree</option>
+                <option value="quetta">Quetta</option>
+            </select>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Wind Speed</h2>
+                <h6 id="wind-speed">12km/h</h6>
+            </div>
+            <div class="card">
+                <h2>Wind Direction</h2>
+                <h6 id="wind-direction">130°</h6>
+            </div>
+            <div class="card">
+                <h2>Weather Code</h2>
+                <h6 id="weather-code">2</h6>
+            </div>
+            <div class="card">
+                <h2>Cloud Cover</h2>
+                <h6 id="cloud-cover">10%</h6>
+            </div>
+            <div class="card">
+                <h2>Rain</h2>
+                <h6 id="rain">0mm</h6>
+            </div>
+            <div class="card">
+                <h2>Humidity</h2>
+                <h6 id="humidity">50%</h6>
+            </div>
+            <div class="card">
+                <h2>Shower</h2>
+                <h6 id="shower">0mm</h6>
+            </div>
+            <div class="card">
+                <h2>Soil Temp</h2>
+                <h6 id="soil-temp">25°C</h6>
+            </div>
+            <div class="card">
+                <h2>Feels Like</h2>
+                <h6 id="apperent-temp">28°C</h6>
+            </div>
+            <div class="card">
+                <h2>Visiblity</h2>
+                <h6 id="visibility">12km</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <canvas id="myChart"></canvas>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

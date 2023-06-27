@@ -1,0 +1,46 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.nav {
+    background-color: #198754 !important;
+}
+
+.nav-link:hover{
+    color: black !important;
+}
+
+.ctg-btn{
+    margin: 10px;
+    text-transform: capitalize;
+}
+
+.ctg-btn:focus{
+    background-color: black !important;
+}
+
+#categories{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.card{
+    padding: 0 !important;
+    width: 350px !important;
+}
+
+#card-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.card-img-top{
+    height: 200px;
+}
