@@ -20,7 +20,6 @@
 
         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude[locationIndex]}&longitude=${longitude[locationIndex]}&current_weather=true&windspeed_unit=mph&hourly=temperature_2m&hourly=cloudcover&hourly=relativehumidity_2m&hourly=rain&hourly=showers&hourly=visibility&hourly=apparent_temperature&hourly=soil_temperature_0cm`);
         const jsonData = await response.json();
-        console.log(jsonData)
 
         document.querySelector('.weather-temp').innerText = jsonData.current_weather.temperature + "°C";
         document.getElementById('wind-speed').innerText = jsonData.current_weather.windspeed + 'km/h';
@@ -74,6 +73,7 @@
                 tension: 0.1
             }]
         };
+        
         var myChart = new Chart(ctx, {
             type: 'line',
             data: data
