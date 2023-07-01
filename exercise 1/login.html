@@ -48,9 +48,6 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2 search__input" type="text" placeholder="Search">
-                        <button class="btn btn-dark">
-                            <a href="login.html" class="text-light text-decoration-none">SignIn</a>
-                        </button>
                     </form>
                 </div>
             </div>
@@ -61,15 +58,17 @@
                 <h2>Login</h2>
                 <form>
                     <div class="user-box">
-                        <input type="text" name="" required>
+                        <input type="text" name="" required id="login-email">
                         <label>Email</label>
+                        <p id="login-email-error" class="text-danger"></p>
                     </div>
                     <div class="user-box">
-                        <input type="password" name="" required>
+                        <input type="password" name="" required id="login-pass">
                         <label>Password</label>
+                        <p id="login-pass-error" class="text-danger"></p>
                     </div>
                     <p class="text-success cursor" id="createAccount">Don't have an Account?</p>
-                    <a href="#">
+                    <a href="#" id="login-btn">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -92,6 +91,7 @@
                     <div class="user-box">
                         <input type="email" id="email" required>
                         <label>Email</label>
+                        <p class="text-danger" id="email-error"></p>
                     </div>
                     <div class="user-box">
                         <input type="password" id="password" required>
@@ -118,5 +118,6 @@
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>
         <script src="login.js" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>

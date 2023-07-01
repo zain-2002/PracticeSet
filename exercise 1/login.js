@@ -8,7 +8,7 @@ createAccountBtn.addEventListener('click', showRegisterForm)
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getAuth,  createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 // web app's Firebase configuration
 const firebaseConfig = {
@@ -22,7 +22,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 let registerBtn = document.getElementById('registerBtn')
 
 function registration() {
@@ -35,17 +35,64 @@ function registration() {
   if (password === confirmPassword) {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in 
       const user = userCredential.user;
+      Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        title: 'Registered',
+        showConfirmButton: false,
+        timer: 1000
+      });
+      setTimeout(() => {
+        location.href = 'index.html';
+      }, 1100);
   })
   .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      if (errorCode === 'auth/email-already-in-use') {
+        document.getElementById('email-error').style.display = 'block';
+        document.getElementById('email-error').innerText = 'Email is already in use';
+      }
   });  
   } else {
     document.getElementById('confirmPasswordError').innerText = 'Password and confirm password should be same'
-  }
-  
-}
-
+  };
+};
 registerBtn.addEventListener('click', registration)
+
+function login() {
+  let loginEmail = document.getElementById('login-email').value;
+  let loginPass = document.getElementById('login-pass').value;
+
+  signInWithEmailAndPassword(auth, loginEmail, loginPass)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    Swal.fire({
+      // position: 'top-end',
+      icon: 'success',
+      title: 'logged In',
+      showConfirmButton: false,
+      timer: 1000
+    });
+    setTimeout(() => {
+      location.href = 'index.html';
+    }, 1100);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    
+    if (errorCode === 'auth/user-not-found') {
+      document.getElementById('login-email-error').innerText = 'No account exist with this email';
+      document.getElementById('login-email-error').style.display = 'block';
+    }
+
+    if (errorCode === 'auth/wrong-password') {
+      document.getElementById('login-pass-error').innerText = 'Wrong Password';
+      document.getElementById('login-pass-error').style.display = 'block';
+    }
+  });
+};
+const loginBtn = document.getElementById('login-btn')
+loginBtn.addEventListener('click', login);

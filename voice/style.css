@@ -1,7 +1,6 @@
 body{
-    background-image: url('https://images.hdqwalls.com/download/a-silent-voice-koe-no-katachi-nord-r2-1920x1080.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #343d4b;
+    position: relative;
 }
 
 .container{
@@ -9,6 +8,10 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 50%);
 }
 
 h1{

@@ -215,4 +215,22 @@ body{
       bottom: 100%;
     }
   }
-  
+
+
+#email-error {
+  display: none;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+#login-email-error{
+  display: none;
+}
+
+#login-pass-error{
+  display: 'none';
+}
+
+.swal2-confirm{
+  margin-left: 10px;
+}
