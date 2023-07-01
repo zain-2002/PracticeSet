@@ -101,10 +101,44 @@ let cardContainer = document.getElementById("card-container");
     });
 
     categories.forEach(item => {
-        let btn = `<button class="btn btn-success ctg-btn" onClick="ctgBtn(this)" value=${item}>${item}</button>`
+        let btn = `<button class="btn btn-success ctg-btn"  value=${item}>${item}</button>`
         document.getElementById("categories").innerHTML += btn;
     })
+    Array.from(document.getElementsByClassName('ctg-btn')).forEach(btn =>{
 
+      btn.addEventListener('click',function (){
+          let categoryProducts = products.filter(product => product.category === btn.value);
+          cardContainer.innerHTML = "";
+        
+          if (btn.value === "all") {
+              products.forEach(product => {
+                  let card = `<div class="card my-4">
+                  <img src=${product.thumbnail} class="card-img-top d-block mx-auto" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">$${product.price}</p>
+                  </div>
+                </div>`
+                cardContainer.innerHTML += card;
+              })
+          } else {
+          categoryProducts.forEach(product => {
+              let card = `<div class="card my-4">
+              <img src=${product.thumbnail} class="card-img-top d-block mx-auto" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text">$${product.price}</p>
+              </div>
+            </div>`
+            cardContainer.innerHTML += card;
+          });
+        };
+        })
+    })
+
+
+
+  
     products.forEach(product => {
         let card = `<div class="card my-4">
         <img src=${product.thumbnail} class="card-img-top d-block mx-auto" alt="...">
@@ -118,34 +152,7 @@ let cardContainer = document.getElementById("card-container");
     });
 })();
 
-let ctgBtn = btn => {
-  let categoryProducts = products.filter(product => product.category === btn.value);
-  cardContainer.innerHTML = "";
 
-  if (btn.value === "all") {
-      products.forEach(product => {
-          let card = `<div class="card my-4">
-          <img src=${product.thumbnail} class="card-img-top d-block mx-auto" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">${product.title}</h5>
-            <p class="card-text">$${product.price}</p>
-          </div>
-        </div>`
-        cardContainer.innerHTML += card;
-      })
-  } else {
-  categoryProducts.forEach(product => {
-      let card = `<div class="card my-4">
-      <img src=${product.thumbnail} class="card-img-top d-block mx-auto" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${product.title}</h5>
-        <p class="card-text">$${product.price}</p>
-      </div>
-    </div>`
-    cardContainer.innerHTML += card;
-  });
-};
-};
 
 const search = async() => {
     let input = document.querySelector(".search__input").value;
